@@ -152,14 +152,13 @@ const SignIn = () => {
         </button>
       </div>
       <p className='text-xs text-center sm:px-6 dark:text-gray-600'>
-        Don't have an account ?
+        Don&apos;t have an account ?
         <NavLink
-          to='/register'
+          to='/singUp'
           rel='noopener noreferrer'
           href='#'
           className=' hover:underline dark:text-violet-600 font-bold'
         >
-          {' '}
           Register
         </NavLink>
         .
