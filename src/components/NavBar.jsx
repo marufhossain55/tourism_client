@@ -36,7 +36,7 @@ const NavBar = () => {
         <NavLink to='/addTouristsSpot'>Add Tourists Spot</NavLink>
       </li>
       <li>
-        <NavLink to='/myList'>MyList</NavLink>
+        <NavLink to='/myList'>My List</NavLink>
       </li>
     </div>
   );
