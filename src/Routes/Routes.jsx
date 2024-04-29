@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
         path: '/myList',
         element: (
           <PrivateRoute>
-            <AddTouristsSpot></AddTouristsSpot>
+            <MyList></MyList>
           </PrivateRoute>
         ),
       },
@@ -53,12 +53,12 @@ export const router = createBrowserRouter([
       {
         path: '/touristsSpots',
         element: <TouristsSpots></TouristsSpots>,
-        // loader: () => fetch('http://localhost:5000/touristsSpots'),
+        loader: () => fetch('http://localhost:5000/touristsSpots'),
       },
       {
         path: '/touristSpotCards/:id',
         element: <TouristSpotDetails></TouristSpotDetails>,
-        loader: () => fetch('http://localhost:5000/touristsSpots'),
+        // loader: () => fetch('http://localhost:5000/touristsSpots'),
       },
     ],
   },

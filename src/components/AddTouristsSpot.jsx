@@ -1,9 +1,12 @@
+import useAuth from '../Hooks/useAuth';
+
 const AddTouristsSpot = () => {
+  const { user } = useAuth();
   const handleAddTouristSpot = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.userName.value;
-    const email = form.email.value;
+    const name = user.displayName;
+    const email = user.email;
     const country_Name = form.country_Name.value;
     const tourists_spot_name = form.tourists_spot_name.value;
     const location = form.location.value;
@@ -13,7 +16,7 @@ const AddTouristsSpot = () => {
     const travel_time = form.travel_time.value;
     const totalVisitorsPerYear = form.totalVisitorsPerYear.value;
     const imageURL = form.imageURL.value;
-    console.log(country_Name);
+
     const addTouristSpot = {
       name,
       email,
@@ -27,8 +30,19 @@ const AddTouristsSpot = () => {
       totalVisitorsPerYear,
       imageURL,
     };
-    form.reset();
     console.log(addTouristSpot);
+
+    fetch('http://localhost:5000/addTouristsSpot', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(addTouristSpot),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.insertedId) {
+          alert('data added');
+        }
+      });
   };
   return (
     <form
@@ -41,6 +55,8 @@ const AddTouristsSpot = () => {
             <span className='label-text'>User Name</span>
           </div>
           <input
+            value={user.displayName}
+            readOnly
             required
             name='userName'
             type='text'
@@ -53,6 +69,8 @@ const AddTouristsSpot = () => {
             <span className='label-text'>User Email</span>
           </div>
           <input
+            value={user.email}
+            readOnly
             required
             name='email'
             type='text'

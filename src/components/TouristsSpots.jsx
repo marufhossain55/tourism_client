@@ -3,7 +3,7 @@ import TouristSpotCards from './TouristSpotCards';
 
 const TouristsSpots = () => {
   const touristsSpots = useLoaderData();
-  console.log(touristsSpots);
+  // console.log(touristsSpots);
 
   return (
     <div className=' container mx-auto grid grid-cols-3 space-y-6'>
