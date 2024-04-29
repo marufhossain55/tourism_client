@@ -7,6 +7,9 @@ import SignUp from '../components/SignUp';
 import AllTouristsSpot from '../components/AllTouristsSpot';
 import AddTouristsSpot from '../components/AddTouristsSpot';
 import MyList from '../components/MyList';
+import TouristsSpots from '../components/TouristsSpots';
+import TouristSpotDetails from '../components/TouristSpotDetails';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +20,7 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
+        loader: () => fetch('http://localhost:5000/touristsSpots'),
       },
       {
         path: '/allTouristsSpot',
@@ -24,11 +28,19 @@ export const router = createBrowserRouter([
       },
       {
         path: '/addTouristsSpot',
-        element: <AddTouristsSpot></AddTouristsSpot>,
+        element: (
+          <PrivateRoute>
+            <AddTouristsSpot></AddTouristsSpot>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/myList',
-        element: <MyList></MyList>,
+        element: (
+          <PrivateRoute>
+            <AddTouristsSpot></AddTouristsSpot>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/singIn',
@@ -37,6 +49,16 @@ export const router = createBrowserRouter([
       {
         path: '/singUp',
         element: <SignUp></SignUp>,
+      },
+      {
+        path: '/touristsSpots',
+        element: <TouristsSpots></TouristsSpots>,
+        // loader: () => fetch('http://localhost:5000/touristsSpots'),
+      },
+      {
+        path: '/touristSpotCards/:id',
+        element: <TouristSpotDetails></TouristSpotDetails>,
+        loader: () => fetch('http://localhost:5000/touristsSpots'),
       },
     ],
   },

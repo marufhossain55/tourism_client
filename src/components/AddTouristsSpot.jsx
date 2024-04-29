@@ -13,6 +13,7 @@ const AddTouristsSpot = () => {
     const travel_time = form.travel_time.value;
     const totalVisitorsPerYear = form.totalVisitorsPerYear.value;
     const imageURL = form.imageURL.value;
+    console.log(country_Name);
     const addTouristSpot = {
       name,
       email,
@@ -40,6 +41,7 @@ const AddTouristsSpot = () => {
             <span className='label-text'>User Name</span>
           </div>
           <input
+            required
             name='userName'
             type='text'
             placeholder='Type here'
@@ -51,6 +53,7 @@ const AddTouristsSpot = () => {
             <span className='label-text'>User Email</span>
           </div>
           <input
+            required
             name='email'
             type='text'
             placeholder='Type here'
@@ -64,18 +67,33 @@ const AddTouristsSpot = () => {
           <div className='label'>
             <span className='label-text'>country Name</span>
           </div>
-          <input
+          {/* <input
             name='country_Name'
             type='text'
             placeholder='Type here'
             className='input input-bordered w-full max-w-xs'
-          />
+          /> */}
+          <select
+            className=' border rounded-r-md h-12 w-52'
+            name='country_Name'
+            id='cars'
+            required
+          >
+            <option value='Bangladesh'>Bangladesh</option>
+            <option value='Thailand'>Thailand</option>
+            <option value='Indonesia'>Indonesia</option>
+            <option value='Malaysia'>Malaysia</option>
+            <option value='Vietnam'>Vietnam</option>
+            <option value='Cambodia'>Cambodia</option>
+          </select>
         </div>
+
         <div>
           <div className='label'>
             <span className='label-text'>tourists_spot_name</span>
           </div>
           <input
+            required
             name='tourists_spot_name'
             type='text'
             placeholder='Type here'
@@ -89,6 +107,7 @@ const AddTouristsSpot = () => {
             <span className='label-text'>location</span>
           </div>
           <input
+            required
             name='location'
             type='text'
             placeholder='Type here'
@@ -100,6 +119,7 @@ const AddTouristsSpot = () => {
             <span className='label-text'>short description</span>
           </div>
           <input
+            required
             name='short_description'
             type='text'
             placeholder='Type here'
@@ -113,8 +133,9 @@ const AddTouristsSpot = () => {
             <span className='label-text'>average_cost</span>
           </div>
           <input
+            required
             name='average_cost'
-            type='number'
+            type='text'
             placeholder='Type here'
             className='input input-bordered w-full max-w-xs'
           />
@@ -124,6 +145,7 @@ const AddTouristsSpot = () => {
             <span className='label-text'>seasonality(e.g: summer, winter)</span>
           </div>
           <input
+            required
             name='seasonality'
             type='text'
             placeholder='Type here'
@@ -137,8 +159,9 @@ const AddTouristsSpot = () => {
             <span className='label-text'> Travel time</span>
           </div>
           <input
+            required
             name='travel_time'
-            type='number'
+            type='text'
             placeholder='Type here'
             className='input input-bordered w-full max-w-xs'
           />
@@ -148,8 +171,9 @@ const AddTouristsSpot = () => {
             <span className='label-text'> total Visitors Per Year</span>
           </div>
           <input
+            required
             name='totalVisitorsPerYear'
-            type='number'
+            type='text'
             placeholder='Type here'
             className='input input-bordered w-full max-w-xs'
           />
@@ -162,6 +186,7 @@ const AddTouristsSpot = () => {
             <span className='label-text'>image URL</span>
           </div>
           <input
+            required
             name='imageURL'
             type='text'
             placeholder='Type here'

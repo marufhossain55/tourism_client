@@ -1,4 +1,13 @@
+import TouristsSpots from './TouristsSpots';
+
 const Home = () => {
-  return <div className='text-4xl'>Home</div>;
+  return (
+    <div>
+      Home
+      <div>
+        <TouristsSpots></TouristsSpots>
+      </div>
+    </div>
+  );
 };
 export default Home;
