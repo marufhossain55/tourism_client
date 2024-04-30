@@ -7,7 +7,7 @@ const MyList = () => {
   const { user } = useAuth();
   const [touristSpot, setTouristSpot] = useState();
   const [control, setControl] = useState(false);
-  // console.log(touristSpot);
+  console.log(touristSpot);
 
   //-----------------show data by user mail --------->//
   useEffect(() => {

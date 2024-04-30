@@ -11,6 +11,7 @@ import TouristsSpots from '../components/TouristsSpots';
 import TouristSpotDetails from '../components/TouristSpotDetails';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import UpdateTouristSpot from '../components/UpdateTouristSpot';
+import Countries from '../components/Countries';
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ export const router = createBrowserRouter([
       {
         path: '/allTouristsSpot',
         element: <AllTouristsSpot></AllTouristsSpot>,
+        loader: () => fetch('http://localhost:5000/touristsSpots'),
       },
       {
         path: '/addTouristsSpot',
@@ -66,6 +68,11 @@ export const router = createBrowserRouter([
         element: <UpdateTouristSpot></UpdateTouristSpot>,
         // loader: ({ params }) =>
         //   fetch(`http://localhost:5000/updateTouristSpot/${params.id}`),
+      },
+      {
+        path: '/countries',
+        element: <Countries></Countries>,
+        loader: () => fetch('http://localhost:5000/countries'),
       },
     ],
   },

@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import useAuth from '../Hooks/useAuth';
 
 const AddTouristsSpot = () => {
@@ -7,7 +8,7 @@ const AddTouristsSpot = () => {
     const form = e.target;
     const name = user.displayName;
     const email = user.email;
-    const country_Name = form.country_Name.value;
+    const country_name = form.country_name.value;
     const tourists_spot_name = form.tourists_spot_name.value;
     const location = form.location.value;
     const short_description = form.short_description.value;
@@ -20,7 +21,7 @@ const AddTouristsSpot = () => {
     const addTouristSpot = {
       name,
       email,
-      country_Name,
+      country_name,
       tourists_spot_name,
       location,
       short_description,
@@ -40,7 +41,13 @@ const AddTouristsSpot = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data?.insertedId) {
-          alert('data added');
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Tourist Spot added',
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
   };
@@ -93,7 +100,7 @@ const AddTouristsSpot = () => {
           /> */}
           <select
             className=' border rounded-r-md h-12 w-52'
-            name='country_Name'
+            name='country_name'
             id='cars'
             required
           >

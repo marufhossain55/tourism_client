@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const UpdateTouristSpot = () => {
   const { user } = useAuth();
@@ -43,14 +44,25 @@ const UpdateTouristSpot = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Tourist spot updated',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
       });
   };
 
   useEffect(() => {
     fetch(`http://localhost:5000/updateTouristSpot/${id}`)
       .then((res) => res.json())
-      .then((data) => setUpdateTourSpot(data));
-  }, [id]);
+      .then((data) => {
+        setUpdateTourSpot(data);
+      });
+  }, [updateTourSpot, id]);
 
   return (
     <form
