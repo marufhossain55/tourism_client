@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import useAuth from '../Hooks/useAuth';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const MyList = () => {
   const { user } = useAuth();
   const [touristSpot, setTouristSpot] = useState();
+  const [control, setControl] = useState(false);
   // console.log(touristSpot);
 
   //-----------------show data by user mail --------->//
@@ -12,10 +14,39 @@ const MyList = () => {
     fetch(`http://localhost:5000/myList/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setTouristSpot(data));
-  }, [user]);
+  }, [user, control]);
 
-  //------------ update data by user id--------->
-
+  //------------ delete data by user id--------->
+  const handleDeleteTourSpot = (_id) => {
+    console.log(_id);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/delete/${_id}`, {
+          method: 'DELETE',
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              setControl(!control);
+              Swal.fire({
+                title: 'Deleted!',
+                text: 'Your tour spot has been deleted.',
+                icon: 'success',
+              });
+            }
+          });
+      }
+    });
+  };
   //----------------------------------------->
   return (
     <div className='container mx-auto w-[60%]'>
@@ -42,7 +73,10 @@ const MyList = () => {
                     </Link>
                   </td>
                   <td>
-                    <button className='w-36 btn btn-error text-white'>
+                    <button
+                      onClick={() => handleDeleteTourSpot(userTouristSpot._id)}
+                      className='w-36 btn btn-error text-white'
+                    >
                       Delete
                     </button>
                   </td>
