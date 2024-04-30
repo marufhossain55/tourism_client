@@ -35,16 +35,14 @@ const UpdateTouristSpot = () => {
     };
     console.log(updateTouristSpot);
 
-    fetch('http://localhost:5000/addTouristsSpot', {
-      method: 'POST',
+    fetch(`http://localhost:5000/updateTouristSpot/${id}`, {
+      method: 'PUT',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(updateTouristSpot),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data?.insertedId) {
-          alert('data added');
-        }
+        console.log(data);
       });
   };
 
@@ -57,15 +55,15 @@ const UpdateTouristSpot = () => {
   return (
     <form
       onSubmit={handleUpdateTouristSpot}
-      className='form-control w-full max-w-[450px] mx-auto'
+      className='form-control w-full max-w-[450px] mx-auto border'
     >
       <div className='flex justify-between'>
-        <div>
+        {/* <div>
           <div className='label'>
             <span className='label-text'>User Name</span>
           </div>
           <input
-            value={user?.displayName}
+            value={user.displayName}
             readOnly
             required
             name='userName'
@@ -73,13 +71,12 @@ const UpdateTouristSpot = () => {
             placeholder='Type here'
             className='input input-bordered w-full max-w-xs'
           />
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <div className='label'>
             <span className='label-text'>User Email</span>
           </div>
           <input
-            value={user?.email}
             readOnly
             required
             name='email'
@@ -87,7 +84,7 @@ const UpdateTouristSpot = () => {
             placeholder='Type here'
             className='input input-bordered w-full max-w-xs'
           />
-        </div>
+        </div> */}
       </div>
 
       <div className='flex justify-between'>
@@ -95,7 +92,12 @@ const UpdateTouristSpot = () => {
           <div className='label'>
             <span className='label-text'>country Name</span>
           </div>
-
+          {/* <input
+          name='country_Name'
+          type='text'
+          placeholder='Type here'
+          className='input input-bordered w-full max-w-xs'
+        /> */}
           <select
             className=' border rounded-r-md h-12 w-52'
             name='country_Name'
@@ -116,7 +118,6 @@ const UpdateTouristSpot = () => {
             <span className='label-text'>tourists_spot_name</span>
           </div>
           <input
-            defaultValue={updateTourSpot.tourists_spot_name}
             required
             name='tourists_spot_name'
             type='text'
@@ -131,7 +132,6 @@ const UpdateTouristSpot = () => {
             <span className='label-text'>location</span>
           </div>
           <input
-            defaultValue={updateTourSpot.location}
             required
             name='location'
             type='text'
@@ -144,7 +144,6 @@ const UpdateTouristSpot = () => {
             <span className='label-text'>short description</span>
           </div>
           <input
-            defaultValue={updateTourSpot.short_description}
             required
             name='short_description'
             type='text'
@@ -156,10 +155,9 @@ const UpdateTouristSpot = () => {
       <div className='flex justify-between'>
         <div>
           <div className='label'>
-            <span className='label-text'>Average cost</span>
+            <span className='label-text'>average_cost</span>
           </div>
           <input
-            defaultValue={updateTourSpot.average_cost}
             required
             name='average_cost'
             type='text'
@@ -172,7 +170,6 @@ const UpdateTouristSpot = () => {
             <span className='label-text'>seasonality(e.g: summer, winter)</span>
           </div>
           <input
-            defaultValue={updateTourSpot.seasonality}
             required
             name='seasonality'
             type='text'
@@ -187,7 +184,6 @@ const UpdateTouristSpot = () => {
             <span className='label-text'> Travel time</span>
           </div>
           <input
-            defaultValue={updateTourSpot.travel_time}
             required
             name='travel_time'
             type='text'
@@ -200,7 +196,6 @@ const UpdateTouristSpot = () => {
             <span className='label-text'> total Visitors Per Year</span>
           </div>
           <input
-            defaultValue={updateTourSpot.totalVisitorsPerYear}
             required
             name='totalVisitorsPerYear'
             type='text'
@@ -216,7 +211,6 @@ const UpdateTouristSpot = () => {
             <span className='label-text'>image URL</span>
           </div>
           <input
-            defaultValue={updateTourSpot.imageURL}
             required
             name='imageURL'
             type='text'
@@ -225,7 +219,7 @@ const UpdateTouristSpot = () => {
           />
         </div>
       </div>
-      <input className='btn btn-accent mt-6' value='Update' />
+      <input type='submit' className='btn btn-accent mt-6' value='Add' />
     </form>
   );
 };
