@@ -36,11 +36,14 @@ const UpdateTouristSpot = () => {
     };
     console.log(updateTouristSpot);
 
-    fetch(`http://localhost:5000/updateTouristSpot/${id}`, {
-      method: 'PUT',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(updateTouristSpot),
-    })
+    fetch(
+      `https://tourism-assignment-server-lilac.vercel.app/updateTouristSpot/${id}`,
+      {
+        method: 'PUT',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(updateTouristSpot),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -57,7 +60,9 @@ const UpdateTouristSpot = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/updateTouristSpot/${id}`)
+    fetch(
+      `https://tourism-assignment-server-lilac.vercel.app/updateTouristSpot/${id}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setUpdateTourSpot(data);

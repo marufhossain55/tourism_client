@@ -11,7 +11,9 @@ const MyList = () => {
 
   //-----------------show data by user mail --------->//
   useEffect(() => {
-    fetch(`http://localhost:5000/myList/${user?.email}`)
+    fetch(
+      `https://tourism-assignment-server-lilac.vercel.app/myList/${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setTouristSpot(data));
   }, [user, control]);
@@ -29,9 +31,12 @@ const MyList = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/delete/${_id}`, {
-          method: 'DELETE',
-        })
+        fetch(
+          `https://tourism-assignment-server-lilac.vercel.app/delete/${_id}`,
+          {
+            method: 'DELETE',
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

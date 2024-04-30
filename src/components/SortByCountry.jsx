@@ -5,7 +5,9 @@ const SortByCountry = () => {
   const { sortByCountry } = useParams();
   console.log(sortByCountry);
   useEffect(() => {
-    fetch(`http://localhost:5000/sortByCountry/${sortByCountry}`)
+    fetch(
+      `https://tourism-assignment-server-lilac.vercel.app/sortByCountry/${sortByCountry}`
+    )
       .then((res) => res.json())
       .then((data) => console.log(data));
   }, []);

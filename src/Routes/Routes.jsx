@@ -23,12 +23,18 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/touristsSpots'),
+        loader: () =>
+          fetch(
+            'https://tourism-assignment-server-lilac.vercel.app/touristsSpots'
+          ),
       },
       {
         path: '/allTouristsSpot',
         element: <AllTouristsSpot></AllTouristsSpot>,
-        loader: () => fetch('http://localhost:5000/touristsSpots'),
+        loader: () =>
+          fetch(
+            'https://tourism-assignment-server-lilac.vercel.app/touristsSpots'
+          ),
       },
       {
         path: '/addTouristsSpot',
@@ -57,30 +63,37 @@ export const router = createBrowserRouter([
       {
         path: '/touristsSpots',
         element: <TouristsSpots></TouristsSpots>,
-        loader: () => fetch('http://localhost:5000/touristsSpots'),
+        loader: () =>
+          fetch(
+            'https://tourism-assignment-server-lilac.vercel.app/touristsSpots'
+          ),
       },
       {
         path: '/touristSpotCards/:id',
         element: <TouristSpotDetails></TouristSpotDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/touristsSpots/${params.id}`),
+          fetch(
+            `https://tourism-assignment-server-lilac.vercel.app/touristsSpots/${params.id}`
+          ),
       },
       {
         path: '/updateTouristSpot/:id',
         element: <UpdateTouristSpot></UpdateTouristSpot>,
         // loader: ({ params }) =>
-        //   fetch(`http://localhost:5000/updateTouristSpot/${params.id}`),
+        //   fetch(`https://tourism-assignment-server-lilac.vercel.app/updateTouristSpot/${params.id}`),
       },
       // {
       //   path: '/countries',
       //   element: <Countries></Countries>,
-      //   loader: () => fetch('http://localhost:5000/countries'),
+      //   loader: () => fetch('https://tourism-assignment-server-lilac.vercel.app/countries'),
       // },
       {
         path: '/sortByCountry/:country_name',
         element: <SortByCountry></SortByCountry>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/sortByCountry/${params.country_name}`),
+          fetch(
+            `https://tourism-assignment-server-lilac.vercel.app/sortByCountry/${params.country_name}`
+          ),
       },
     ],
   },

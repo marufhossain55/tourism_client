@@ -33,11 +33,14 @@ const AddTouristsSpot = () => {
     };
     console.log(addTouristSpot);
 
-    fetch('http://localhost:5000/addTouristsSpot', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(addTouristSpot),
-    })
+    fetch(
+      'https://tourism-assignment-server-lilac.vercel.app/addTouristsSpot',
+      {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(addTouristSpot),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data?.insertedId) {
