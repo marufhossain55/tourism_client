@@ -9,6 +9,7 @@ import toast from 'react-hot-toast';
 const SignUp = () => {
   const { createUser, updateUserProfile } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
+  // const [errorMessage, setErrorMessage] = useState('');
 
   const location = useLocation();
   useEffect(() => {
@@ -28,6 +29,17 @@ const SignUp = () => {
   const onSubmit = (data) => {
     const { email, password, fullName, image } = data;
 
+    if (password.length < 6) {
+      return toast.error('use must 6 digit');
+    }
+    if (!/[A-Z]/.test(password)) {
+      return toast.error('You Must use an uppercase in the password');
+    }
+
+    if (!/[a-z]/.test(password)) {
+      return toast.error('You Must use a Lowercase in the password');
+    }
+
     //create user and update profile
     createUser(email, password).then(() => {
       updateUserProfile(fullName, image).then(() => {
@@ -35,33 +47,9 @@ const SignUp = () => {
       });
       toast.success('registration successful');
     });
-
-    const uppercaseRegex = /[A-Z]/;
-    const lowercaseRegex = /[a-z]/;
-
-    if (password.length < 6) {
-      setErrorMessage('Password must be at least 6 characters long');
-      return;
-    }
-
-    if (!uppercaseRegex.test(password)) {
-      setErrorMessage('Password must contain at least one uppercase letter');
-      return;
-    }
-
-    if (!lowercaseRegex.test(password)) {
-      setErrorMessage('Password must contain at least one lowercase letter');
-      return;
-    }
   };
   ///////////////////////////////////////
 
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
   return (
     <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 dark:bg-gray-50 dark:text-gray-800 mx-auto'>
       <div className='mb-8 text-center'>
@@ -133,7 +121,7 @@ const SignUp = () => {
             </div>
             <div className='relative'>
               <input
-                onChange={handlePasswordChange}
+                // onChange={handlePasswordChange}
                 type={showPassword ? 'text' : 'password'}
                 name='password'
                 id='password'
@@ -156,7 +144,6 @@ const SignUp = () => {
         </div>
         <div className='space-y-2'>
           <div>
-            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             <button
               type='submit'
               className='btn btn-accent w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-600 dark:text-gray-50'

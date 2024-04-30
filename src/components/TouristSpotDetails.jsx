@@ -4,9 +4,11 @@ import { useLoaderData, useParams } from 'react-router-dom';
 
 const TouristSpotDetails = () => {
   const { id } = useParams();
+  console.log(id);
   const touristsSpot = useLoaderData();
+  console.log(touristsSpot);
 
-  const singleSingleTouristSpot = touristsSpot.find((spot) => spot._id == id);
+  // const singleSingleTouristSpot = touristsSpot.find((spot) => spot._id == id);
   const {
     _id,
     average_cost,
@@ -19,8 +21,8 @@ const TouristSpotDetails = () => {
     tourists_spot_name,
     travel_time,
     total_visitors_per_year,
-  } = singleSingleTouristSpot;
-  console.log(singleSingleTouristSpot);
+  } = touristsSpot;
+  console.log(touristsSpot);
   return (
     <section className='p-4 lg:p-8 dark:bg-gray-100 dark:text-gray-800'>
       <div className='container mx-auto space-y-12'>

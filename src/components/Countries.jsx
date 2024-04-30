@@ -1,14 +1,18 @@
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+import { Fade } from 'react-awesome-reveal';
 
 const Countries = () => {
   const countries = useLoaderData();
   console.log(countries);
+
   return (
-    <div>
-      <h1 className='font-bold text-4xl container text-center'>Countries</h1>
-      <div className='container mx-auto grid grid-cols-3'>
-        {countries.map((country) => (
-          <div key={country._id}>
+    <div className='mt-40'>
+      <Fade>
+        <h1 className='font-bold text-4xl text-center mb-24'>Countries</h1>
+      </Fade>
+      <div className='container mx-auto grid lg:grid-cols-3  md:grid-cols-2 cursor-pointer'>
+        {countries?.map((country) => (
+          <Link key={country._id} to={`/sortByCountry/${country.country_name}`}>
             <div className='max-w-[23rem] rounded-md shadow-md dark:bg-gray-50 dark:text-gray-800  '>
               <img
                 src={country.imageURL}
@@ -27,7 +31,7 @@ const Countries = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

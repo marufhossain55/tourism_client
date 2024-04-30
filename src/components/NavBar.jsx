@@ -68,13 +68,13 @@ const NavBar = () => {
           </ul>
         </div>
         <NavLink to='/' className='text-2xl btn btn-ghost'>
-          DreamOland
+          TakeATour
         </NavLink>
       </div>
       <div className='navbar-center hidden lg:flex'>
         <ul className='menu menu-horizontal px-1'>{navLinks}</ul>
       </div>
-
+      {/* data-tip={user?.displayName} */}
       <div className='navbar-end space-x-3'>
         {user ? (
           <>

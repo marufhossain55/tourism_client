@@ -12,6 +12,7 @@ import TouristSpotDetails from '../components/TouristSpotDetails';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import UpdateTouristSpot from '../components/UpdateTouristSpot';
 import Countries from '../components/Countries';
+import SortByCountry from '../components/SortByCountry';
 
 export const router = createBrowserRouter([
   {
@@ -61,7 +62,8 @@ export const router = createBrowserRouter([
       {
         path: '/touristSpotCards/:id',
         element: <TouristSpotDetails></TouristSpotDetails>,
-        loader: () => fetch('http://localhost:5000/touristsSpots'),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/touristsSpots/${params.id}`),
       },
       {
         path: '/updateTouristSpot/:id',
@@ -69,10 +71,16 @@ export const router = createBrowserRouter([
         // loader: ({ params }) =>
         //   fetch(`http://localhost:5000/updateTouristSpot/${params.id}`),
       },
+      // {
+      //   path: '/countries',
+      //   element: <Countries></Countries>,
+      //   loader: () => fetch('http://localhost:5000/countries'),
+      // },
       {
-        path: '/countries',
-        element: <Countries></Countries>,
-        loader: () => fetch('http://localhost:5000/countries'),
+        path: '/sortByCountry/:country_name',
+        element: <SortByCountry></SortByCountry>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/sortByCountry/${params.country_name}`),
       },
     ],
   },
