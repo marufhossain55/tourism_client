@@ -2,6 +2,12 @@
 
 # live site :https://tourism-auth-2dde7.web.app
 
+# How to Run this Project
+
+- clone or Download
+- npm i
+- npm run dev
+
 # Features:
 
 - Explore: Browse through a vast collection of tourist spots from all corners of the world. From iconic landmarks to hidden gems, there's something for everyone.
@@ -10,4 +16,11 @@
 - Rating and Reviews: Rate and review tourist spots based on your experiences. Help fellow travelers by sharing insights, tips, and recommendations.
 - Personalized Recommendations: Receive personalized recommendations based on your preferences and past interactions. Discover new places that match your interests and travel style.
 
-# selected categories : Southeast Asia
+ # used technology
+    - react.js
+    - javaScript
+    - mongoDD
+    - node.js
+    - express.js
+    - tailwind CSS
+
