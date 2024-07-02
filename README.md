@@ -19,7 +19,7 @@
  # used technology
     - react.js
     - javaScript
-    - mongoDD
+    - mongoDB
     - node.js
     - express.js
     - tailwind CSS
